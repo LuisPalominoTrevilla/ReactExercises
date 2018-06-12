@@ -5,8 +5,6 @@ class DishDetail extends Component{
 
     constructor(props) {
         super(props);
-
-        this.state = {}
     }
 
     renderDish(dish) {
@@ -32,7 +30,7 @@ class DishDetail extends Component{
             const comm = comments.map((comment) => {
                 return(
                     <div>
-                        <li> {comment.comment} <br/> -- {comment.author}, {comment.daye} </li> 
+                        <li> {comment.comment} <br/> -- {comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))} </li> 
                         <br/>
                     </div>
                 );
@@ -53,12 +51,14 @@ class DishDetail extends Component{
 
     render() {
         return(
-            <div className="row">
-                <div className="col-12 col-md-5 m-1">
-                    { this.renderDish(this.props.selectedDish) }
-                </div>
-                <div className="col-12 col-md-5 m-1">
-                    {this.renderComments((this.props.selectedDish != null)? this.props.selectedDish.comments: null)}
+            <div className="container">
+                <div className="row">
+                    <div className="col-12 col-md-5 m-1">
+                        { this.renderDish(this.props.selectedDish) }
+                    </div>
+                    <div className="col-12 col-md-5 m-1">
+                        {this.renderComments((this.props.selectedDish != null)? this.props.selectedDish.comments: null)}
+                    </div>
                 </div>
             </div>
         );
