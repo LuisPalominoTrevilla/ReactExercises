@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Menu from './menuComponent';
 import { DISHES } from '../shared/dishes';
 import DishDetail from './DishdetailComponent';
+import Header from './headerComponent';
+import Footer from './footerComponent';
 
 class Main extends Component {
 
@@ -22,12 +24,11 @@ class Main extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-light" style={{background: '#e3f2fd'}}>
-          <h2>Ristorante Con Fusion</h2>
-        </nav>
+        <Header />
         <Menu dishes={this.state.dishes}
             onClick={(dishId) => this.onDishSelect(dishId)}/>
         <DishDetail selectedDish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]}/>
+        <Footer />
       </div>
     );
   }
