@@ -21,7 +21,7 @@ class CommentForm extends Component {
 
     handleSubmit(values) {
         console.log(JSON.stringify(values));
-        alert(JSON.stringify(values));
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
     toogleModal() {
@@ -107,7 +107,7 @@ function RenderDish({dish}) {
     );
 }
 
-function RenderComments({comments}){
+function RenderComments({comments, addComment, dishId}){
     const comm = comments.map((comment) => {
         return(
             <div key={comment.id}>
@@ -123,7 +123,7 @@ function RenderComments({comments}){
             <ul className="list-unstyled">
             {comm}
             </ul>
-            <CommentForm/>
+            <CommentForm dishId ={dishId} addComment={addComment}/>
         </div>
     );
 }
@@ -143,7 +143,9 @@ const DishDetail = (props) => {
                         <RenderDish dish={props.selectedDish}/>
                     </div>
                     <div className="col-12 col-md-5 m-1">
-                        <RenderComments comments={props.comments}/>
+                        <RenderComments comments={props.comments}
+                        addComment={props.addComment}
+                        dishId={props.selectedDish.id}/>
                     </div>
                 </div>
             </div>
