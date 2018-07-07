@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
         Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
+import Sticky from 'react-sticky-el';
 
 class Header extends Component {
 
@@ -77,6 +78,7 @@ class Header extends Component {
                         </Collapse>
                     </div>
                 </Navbar>
+                <Sticky>
                 <Jumbotron>
                     <div className="Container">
                         <div className="row row-header">
@@ -87,6 +89,7 @@ class Header extends Component {
                         </div>
                     </div>
                 </Jumbotron>
+                </Sticky>
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader >Login</ModalHeader>
                     <ModalBody>
